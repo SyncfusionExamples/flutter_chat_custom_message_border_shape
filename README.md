@@ -1,0 +1,1 @@
+# flutter_chat_custom_message_border_shape
