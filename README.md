@@ -4,7 +4,7 @@ This repository contains a sample to implement the custom border shape for messa
 
 Please refer the KB through this [link](https://support.syncfusion.com/agent/kb/18701).
 
-## Syncfusion widgets: <sup>&reg;</sup>
+## Syncfusion widgets:<sup>&reg;</sup>
 
 This project used the following Syncfusion widget(s):
 * [Chat](https://www.syncfusion.com/flutter-widgets/flutter-chat)
