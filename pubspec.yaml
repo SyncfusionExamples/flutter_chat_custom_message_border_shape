@@ -1,0 +1,25 @@
+name: flutter_chat_custom_message_border_shape
+description: "Syncfusion flutter SfChat custom message border shape"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  syncfusion_flutter_chat: ^28.1.36+1-beta
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  assets:
+       - images/people_Circle2.png
+  
+
+  
