@@ -43,7 +43,8 @@ class ChatSampleState extends State<ChatSample> {
         ),
       ),
       ChatMessage(
-        text: 'I’ve been doing well. I’ve started working on a new project recently.',
+        text:
+            'I’ve been doing well. I’ve started working on a new project recently.',
         time: DateTime.now(),
         author: const ChatAuthor(
           id: '8ob3-b720-g9s6-25s8',
@@ -51,7 +52,8 @@ class ChatSampleState extends State<ChatSample> {
         ),
       ),
       ChatMessage(
-        text: 'That sounds great! I’ve been exploring a few new frameworks myself.',
+        text:
+            'That sounds great! I’ve been exploring a few new frameworks myself.',
         time: DateTime.now(),
         author: const ChatAuthor(
           id: 'a2c4-56h8-9x01-2a3d',
@@ -71,25 +73,30 @@ class ChatSampleState extends State<ChatSample> {
         messages: _messages, // Setting the messages list.
         outgoingUser: '8ob3-b720-g9s6-25s8', // Outgoing user ID.
         incomingBubbleSettings: ChatBubbleSettings(
-          showTimestamp: false, 
-          showUserName: false, 
-          textStyle: TextStyle(color: Colors.white), 
-          contentPadding: EdgeInsets.only(top: 15, bottom: 30, left: 30, right: 30), // Ensure sufficient space inside the bubble to accommodate the custom tail shape.
-          contentBackgroundColor: Colors.green[600], 
-          contentShape: CustomBorderShape(isOutgoing: false), // Custom shape for incoming message bubble.
+          showTimestamp: false,
+          showUserName: false,
+          textStyle: TextStyle(color: Colors.white),
+          // Ensure sufficient space inside the bubble to accommodate the custom tail shape.
+          contentPadding:
+              EdgeInsets.only(top: 15, bottom: 30, left: 28, right: 30),
+          contentBackgroundColor: Colors.green[600],
+          contentShape: CustomBorderShape(
+              isOutgoing: false), // Custom shape for incoming message bubble.
         ),
         outgoingBubbleSettings: ChatBubbleSettings(
           showTimestamp: false, // Disabling the timestamp for a cleaner look.
           showUserName: false, // Disabling the username for a cleaner look.
           showUserAvatar: false, // Disabling the avatar for a cleaner look.
-          textStyle: TextStyle(color: Colors.white), 
-          contentPadding: EdgeInsets.only(top: 15, bottom: 30, left: 30, right: 30),
-          contentBackgroundColor: Colors.deepPurple[600], 
-          contentShape: CustomBorderShape(isOutgoing: true), // Custom shape for outgoing message bubble.
+          textStyle: TextStyle(color: Colors.white),
+          contentPadding:
+              EdgeInsets.only(top: 15, bottom: 30, left: 28, right: 30),
+          contentBackgroundColor: Colors.deepPurple[600],
+          contentShape: CustomBorderShape(
+              isOutgoing: true), // Custom shape for outgoing message bubble.
         ),
         composer: const ChatComposer(
           decoration: InputDecoration(
-            hintText: 'Type a message', 
+            hintText: 'Type a message',
           ),
         ),
       ),
@@ -104,7 +111,8 @@ class ChatSampleState extends State<ChatSample> {
 }
 
 class CustomBorderShape extends ShapeBorder {
-  final bool isOutgoing; // Flag to check if the message is outgoing or incoming.
+  // Flag to check if the message is outgoing or incoming.
+  final bool isOutgoing;
   final double borderRadius; // Border radius for rounded corners.
   final double tailHeight; // Height of the message tail.
 
@@ -122,7 +130,8 @@ class CustomBorderShape extends ShapeBorder {
     // Calculate the bottom of the bubble considering the tail height.
     final double bottom = rect.bottom - tailHeight;
     // Adjust the radius based on width/height for better aesthetics.
-    final double adjustedRadius = borderRadius.clamp(0, (rect.width / 3).clamp(0, rect.height / 3));
+    final double adjustedRadius =
+        borderRadius.clamp(0, (rect.width / 3).clamp(0, rect.height / 3));
     // Store left and right positions for reusability.
     final double left = rect.left;
     final double right = rect.right;
@@ -131,9 +140,9 @@ class CustomBorderShape extends ShapeBorder {
     // Create a rounded rectangle path for the bubble.
     path.addRRect(
       RRect.fromLTRBAndCorners(
-        rect.left,
+        left,
         rect.top,
-        rect.right,
+        right,
         bottom,
         topLeft: Radius.circular(adjustedRadius),
         bottomLeft: Radius.circular(adjustedRadius),
@@ -145,22 +154,19 @@ class CustomBorderShape extends ShapeBorder {
     // Calculate the start and end positions of the tail based on message type (outgoing/incoming).
     final double tailStartX =
         isOutgoing ? right - adjustedRadius : left + adjustedRadius;
-    final double tailEndX = isOutgoing
-        ? right - adjustedRadius * 1.4
-        : left + adjustedRadius * 1.5;
+    final double tailEndX =
+        isOutgoing ? right - adjustedRadius * 1.4 : left + adjustedRadius * 1.5;
 
     // Create the tail using a quadratic bezier curve.
     path.moveTo(tailStartX, bottom);
     path.quadraticBezierTo(
-      isOutgoing
-          ? right - adjustedRadius * 1.2
-          : left + adjustedRadius * 1.2,
+      isOutgoing ? right - adjustedRadius * 1.2 : left + adjustedRadius * 1.2,
       bottom + tailHeight * 0.5,
       tailStartX,
       bottom + tailHeight,
     );
-    path.lineTo(tailEndX, bottom); 
-    path.close(); 
+    path.lineTo(tailEndX, bottom);
+    path.close();
 
     return path;
   }
@@ -173,6 +179,7 @@ class CustomBorderShape extends ShapeBorder {
 
   @override
   Path getInnerPath(Rect rect, {TextDirection? textDirection}) {
-    return getOuterPath(rect, textDirection: textDirection);
+    // This method is not used in this implementation of ShapeBorder.
+    return Path();
   }
 }
