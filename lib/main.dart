@@ -72,26 +72,24 @@ class ChatSampleState extends State<ChatSample> {
       child: SfChat(
         messages: _messages, // Setting the messages list.
         outgoingUser: '8ob3-b720-g9s6-25s8', // Outgoing user ID.
-        incomingBubbleSettings: ChatBubbleSettings(
+        incomingMessageSettings: ChatMessageSettings(
           showTimestamp: false,
-          showUserName: false,
+          showAuthorName: false,
           textStyle: TextStyle(color: Colors.white),
           // Ensure sufficient space inside the bubble to accommodate the custom tail shape.
-          contentPadding:
-              EdgeInsets.only(top: 15, bottom: 30, left: 28, right: 30),
-          contentBackgroundColor: Colors.green[600],
-          contentShape: CustomBorderShape(
+          padding: EdgeInsets.only(top: 15, bottom: 30, left: 28, right: 30),
+          backgroundColor: Colors.green[600],
+          shape: CustomBorderShape(
               isOutgoing: false), // Custom shape for incoming message bubble.
         ),
-        outgoingBubbleSettings: ChatBubbleSettings(
+        outgoingMessageSettings: ChatMessageSettings(
           showTimestamp: false, // Disabling the timestamp for a cleaner look.
-          showUserName: false, // Disabling the username for a cleaner look.
-          showUserAvatar: false, // Disabling the avatar for a cleaner look.
+          showAuthorName: false, // Disabling the username for a cleaner look.
+          showAuthorAvatar: false, // Disabling the avatar for a cleaner look.
           textStyle: TextStyle(color: Colors.white),
-          contentPadding:
-              EdgeInsets.only(top: 15, bottom: 30, left: 28, right: 30),
-          contentBackgroundColor: Colors.deepPurple[600],
-          contentShape: CustomBorderShape(
+          padding: EdgeInsets.only(top: 15, bottom: 30, left: 28, right: 30),
+          backgroundColor: Colors.deepPurple[600],
+          shape: CustomBorderShape(
               isOutgoing: true), // Custom shape for outgoing message bubble.
         ),
         composer: const ChatComposer(
